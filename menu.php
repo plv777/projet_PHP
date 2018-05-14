@@ -5,5 +5,4 @@
             <a href="deconnexion.php">DÉCONNEXION</a>
             <a href="profil.php">PROFIL</a>
             <a href="lost_password.php">MdP perdu</a>
-            <a href="activate_account.php">ACTIVATION COMPTE</a><br><br>
 </nav>

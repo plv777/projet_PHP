@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['user'])){
+    require 'alreadyConnected.php';
+    die();
+}
 require "recap_valid.php" ;
 
 if (isset($_POST["name"]) && isset($_POST["firstName"]) &&
@@ -78,18 +83,19 @@ if (isset($_POST["name"]) && isset($_POST["firstName"]) &&
             Courriel<input name="email" type="text">
             <input type="submit">
         </form>
-<?php
+        <?php
     if (isset($error_messages)) {
         foreach($error_messages as $message) {
-            echo "<br>" . $message ;
+            echo "<p style='color:red'>" . $message ."</p>" ;
         }
     }
     if (isset($success)) {
-        echo "<br>Formulaire bien rempli et nouvel utilisateur créé !" ;
+        echo "<p style='color:green'>Formulaire bien rempli et vous êtes bien inscrit !</p>" ;
 
     }
 
 ?>
+
 
     </body>
 </html>
