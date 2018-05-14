@@ -36,28 +36,18 @@ if (isset($_POST["name"]) && isset($_POST["firstName"]) &&
         if(!empty($verifyEmail->fetch())){
             $error_messages[]='email déjà utilisé !';
         }else{
-            $newUser=$bdd->prepare('INSERT INTO users(name,firstname,password,email) VALUES(?,?,?,?)');
-            $newUser->execute(array($_POST['name'],$_POST['firstName'],password_hash($_POST['password'],PASSWORD_BCRYPT),$_POST['email']));
+            $newUser=$bdd->prepare('INSERT INTO users(name,firstname,password,email,token) VALUES(?,?,?,?,?)');
+            $newUser->execute(array($_POST['name'],$_POST['firstName'],password_hash($_POST['password'],PASSWORD_BCRYPT),$_POST['email'],""));
             if($newUser->rowCount() > 0){
                 $success=true;
             }
-            
             $newUser->closeCursor();
-
         }
         $verifyEmail->closeCursor();
 
-
     }
-
 }  
-
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -91,7 +81,6 @@ if (isset($_POST["name"]) && isset($_POST["firstName"]) &&
     }
     if (isset($success)) {
         echo "<p style='color:green'>Formulaire bien rempli et vous êtes bien inscrit !</p>" ;
-
     }
 
 ?>
