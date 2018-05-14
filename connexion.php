@@ -59,6 +59,9 @@ if ( isset($_POST["password"])  && isset($_POST["email"])) {
 <header>
     <?php include "menu.php" ; ?>
 </header>  
+<?php
+if (!isset($success)) {
+?>
 <form action="connexion.php" method="POST">
 
     <label for="email">Email</label>
@@ -70,6 +73,7 @@ if ( isset($_POST["password"])  && isset($_POST["email"])) {
     <input type="submit" value="Connexion">
 </form>
 <?php
+}
     if (isset($error_messages)) {
         foreach($error_messages as $message) {
             echo "<p style='color:red'>" . $message ."</p>" ;
@@ -77,7 +81,7 @@ if ( isset($_POST["password"])  && isset($_POST["email"])) {
     }
     if (isset($success)) {
         echo "<p style='color:green'>Vous êtes bien connecté!</p>" ;
-        var_dump($_SESSION['user']);
+        // var_dump($_SESSION['user']);
     }
 
 ?>
